@@ -88,19 +88,23 @@ public class MainController {
     }
 
     private void displayDeleteVehicleMenu() {
-        System.out.print("Nhập số hiệu: ");
-        String registrationNumber = scanner.nextLine();
+        while (true) {
+            System.out.print("Nhập số hiệu: ");
+            String registrationNumber = scanner.nextLine();
 
-        try {
-            if (registrationNumber.startsWith("DRN")) {
-                droneController.deleteDrone(registrationNumber);
-            } else if (registrationNumber.startsWith("XTT")) {
-                moonPatrolVehicleController.deleteMoonPatrolVehicle(registrationNumber);
-            } else {
-                System.out.println("Lỗi!");
+            try {
+                if (registrationNumber.startsWith("DRN")) {
+                    droneController.deleteDrone(registrationNumber);
+                    break;
+                } else if (registrationNumber.startsWith("XTT")) {
+                    moonPatrolVehicleController.deleteMoonPatrolVehicle(registrationNumber);
+                    break;
+                } else {
+                    System.out.println("Lỗi! Số hiệu phải bắt đầu bằng 'DRN' hoặc 'XTT'.");
+                }
+            } catch (NotFoundVehicleException e) {
+                System.out.println(e.getMessage());
             }
-        } catch (NotFoundVehicleException e) {
-            System.out.println(e.getMessage());
         }
     }
 }

@@ -30,9 +30,9 @@ public class DroneController {
     public void deleteDrone(String registrationNumber) throws NotFoundVehicleException {
         Drone drone = droneService.findById(registrationNumber);
         if (drone == null) {
-            throw new NotFoundVehicleException("Vehicle registration number does not exist.");
+            throw new NotFoundVehicleException("Số hiệu không tồn tại!");
         }
         droneService.delete(registrationNumber);
-        System.out.println("Deleted successfully!");
+        System.out.println("Xoá thành công!");
     }
 }
