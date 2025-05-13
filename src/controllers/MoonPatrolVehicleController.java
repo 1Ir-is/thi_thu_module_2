@@ -1,7 +1,7 @@
 package controllers;
 
 import models.MoonPatrolVehicle;
-import services.MoonPatrolVehicleService;
+import services.vehicle.MoonPatrolVehicleService;
 import views.MoonPetrolVehicleView;
 import exception.NotFoundVehicleException;
 

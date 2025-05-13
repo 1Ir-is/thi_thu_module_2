@@ -20,7 +20,7 @@ public class Drone extends Vehicle {
     public String toCSV() {
         return registrationNumber + "," + manufacturer + "," + productionYear + "," + coordinator + "," + maxRange;
     }
-
+    
     @Override
     public String getDetails() {
         return "Drone [Registration: " + registrationNumber + ", Manufacturer: " + manufacturer +

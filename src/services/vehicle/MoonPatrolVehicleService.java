@@ -1,7 +1,7 @@
-package services;
+package services.vehicle;
 
 import models.MoonPatrolVehicle;
-import repositories.MoonPatrolVehicleRepository;
+import repositories.vehicles.MoonPatrolVehicleRepository;
 
 import java.util.List;
 

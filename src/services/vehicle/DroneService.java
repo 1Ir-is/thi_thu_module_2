@@ -1,7 +1,7 @@
-package services;
+package services.vehicle;
 
 import models.Drone;
-import repositories.DroneRepository;
+import repositories.vehicles.DroneRepository;
 
 import java.util.List;
 

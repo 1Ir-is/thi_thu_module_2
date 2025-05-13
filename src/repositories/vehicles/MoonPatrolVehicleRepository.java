@@ -1,4 +1,4 @@
-package repositories;
+package repositories.vehicles;
 
 import models.MoonPatrolVehicle;
 import utils.SaveFileUtils;
