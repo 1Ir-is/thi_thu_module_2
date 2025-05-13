@@ -26,4 +26,15 @@ public class Drone extends Vehicle {
         return "Drone [Registration: " + registrationNumber + ", Manufacturer: " + manufacturer +
                 ", Year: " + productionYear + ", Coordinator: " + coordinator + ", Max Range: " + maxRange + " km]";
     }
+
+    public static Drone fromCSV(String csv) {
+        String[] parts = csv.split(",");
+        return new Drone(
+                parts[0],
+                parts[1],
+                Integer.parseInt(parts[2]),
+                parts[3],
+                Integer.parseInt(parts[4])
+        );
+    }
 }
