@@ -17,8 +17,8 @@ public class MainController {
     public void displayMainMenu() {
         boolean exit = false;
 
-        while(!exit) {
-           int choice = MainView.showMainMenu();
+        while (!exit) {
+            int choice = MainView.showMainMenu();
             switch (choice) {
                 case 1:
                     displayAddVehicleMenu();
@@ -33,8 +33,12 @@ public class MainController {
                     displayDeleteVehicleMenu();
                     break;
                 case 5:
-                    exit = true;
-                    System.out.println("Exiting program...");
+                    System.out.print("Bạn có chắc chắn muốn thoát? (y/n): ");
+                    String confirmation = scanner.nextLine().trim().toLowerCase();
+                    if ("y".equals(confirmation)) {
+                        exit = true;
+                        System.out.println("Thoát chương trình!");
+                    }
                     break;
                 default:
                     System.out.println("Lỗi");
