@@ -1,9 +1,9 @@
 package controllers;
 
 import models.Drone;
-
 import services.DroneService;
 import views.DroneView;
+import exception.NotFoundVehicleException;
 
 import java.util.List;
 
@@ -27,9 +27,12 @@ public class DroneController {
         return droneService.searchByNameCoordinator(keyword);
     }
 
-    public void deleteDrone() {
-        String registrationNumberToDelete = DroneView.getIdToDelete();
-        droneService.delete(registrationNumberToDelete);
-        System.out.println("Xoá thành công!");
+    public void deleteDrone(String registrationNumber) throws NotFoundVehicleException {
+        Drone drone = droneService.findById(registrationNumber);
+        if (drone == null) {
+            throw new NotFoundVehicleException("Vehicle registration number does not exist.");
+        }
+        droneService.delete(registrationNumber);
+        System.out.println("Deleted successfully!");
     }
 }

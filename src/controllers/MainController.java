@@ -1,5 +1,6 @@
 package controllers;
 
+import exception.NotFoundVehicleException;
 import models.Drone;
 import models.MoonPatrolVehicle;
 import utils.ValidationUtils;
@@ -29,9 +30,14 @@ public class MainController {
                     searchVehicle();
                     break;
                 case 4:
+                    displayDeleteVehicleMenu();
                     break;
                 case 5:
-
+                    exit = true;
+                    System.out.println("Exiting program...");
+                    break;
+                default:
+                    System.out.println("Lỗi");
             }
         }
     }
@@ -78,6 +84,23 @@ public class MainController {
         }
         if (drones.isEmpty() && moonPatrolVehicles.isEmpty()) {
             System.out.println("Không tìm thấy!");
+        }
+    }
+
+    private void displayDeleteVehicleMenu() {
+        System.out.print("Nhập số hiệu: ");
+        String registrationNumber = scanner.nextLine();
+
+        try {
+            if (registrationNumber.startsWith("DRN")) {
+                droneController.deleteDrone(registrationNumber);
+            } else if (registrationNumber.startsWith("XTT")) {
+                moonPatrolVehicleController.deleteMoonPatrolVehicle(registrationNumber);
+            } else {
+                System.out.println("Lỗi!");
+            }
+        } catch (NotFoundVehicleException e) {
+            System.out.println(e.getMessage());
         }
     }
 }

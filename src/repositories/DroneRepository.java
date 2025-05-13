@@ -67,4 +67,15 @@ public class DroneRepository implements IVehicleRepository<Drone> {
         }
         return result;
     }
+
+    public Drone findById(String registrationNumber) {
+        List<Drone> current = findAll();
+        for (Drone drone : current) {
+            if (drone.getRegistrationNumber().equalsIgnoreCase(registrationNumber)) {
+                return drone;
+            }
+        }
+        return null;
+    }
+
 }

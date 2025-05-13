@@ -27,4 +27,9 @@ public class MoonPatrolVehicleService implements IVehicleService<MoonPatrolVehic
     public List<MoonPatrolVehicle> searchByNameCoordinator(String keyword) {
         return moonPatrolVehicleRepository.searchByName(keyword);
     }
+
+    @Override
+    public MoonPatrolVehicle findById(String registrationNumber) {
+        return moonPatrolVehicleRepository.findById(registrationNumber);
+    }
 }

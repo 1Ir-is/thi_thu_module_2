@@ -67,4 +67,15 @@ public class MoonPatrolVehicleRepository implements IVehicleRepository<MoonPatro
         }
         return result;
     }
+
+
+    public MoonPatrolVehicle findById(String registrationNumber) {
+        List<MoonPatrolVehicle> current = findAll();
+        for (MoonPatrolVehicle moonPatrolVehicle : current) {
+            if (moonPatrolVehicle.getRegistrationNumber().equalsIgnoreCase(registrationNumber)) {
+                return moonPatrolVehicle;
+            }
+        }
+        return null;
+    }
 }

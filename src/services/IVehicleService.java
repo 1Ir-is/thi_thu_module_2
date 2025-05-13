@@ -7,4 +7,5 @@ public interface IVehicleService<T> {
     void add(T vehicle);
     void delete(String registrationNumber);
     List<T> searchByNameCoordinator(String keyword);
+    T findById(String registrationNumber);
 }

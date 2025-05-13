@@ -8,4 +8,5 @@ public interface IVehicleRepository<T> {
     void add(T vehicle);
     void delete(String registrationNumber);
     List<T> searchByName(String keyword);
+    T findById(String registrationNumber);
 }

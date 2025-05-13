@@ -27,4 +27,9 @@ public class DroneService implements IVehicleService<Drone> {
     public List<Drone> searchByNameCoordinator(String keyword) {
         return droneRepository.searchByName(keyword);
     }
+
+    @Override
+    public Drone findById(String registrationNumber) {
+        return droneRepository.findById(registrationNumber);
+    }
 }

@@ -3,6 +3,7 @@ package controllers;
 import models.MoonPatrolVehicle;
 import services.MoonPatrolVehicleService;
 import views.MoonPetrolVehicleView;
+import exception.NotFoundVehicleException;
 
 import java.util.List;
 
@@ -26,9 +27,12 @@ public class MoonPatrolVehicleController {
         return moonPatrolVehicleService.searchByNameCoordinator(keyword);
     }
 
-    public void deleteMoonPatrolVehicle() {
-        String registrationNumberToDelete = MoonPetrolVehicleView.getIdToDelete();
-        moonPatrolVehicleService.delete(registrationNumberToDelete);
-        System.out.println("Xoá thành công!");
+    public void deleteMoonPatrolVehicle(String registrationNumber) throws NotFoundVehicleException {
+        MoonPatrolVehicle moonPatrolVehicle = moonPatrolVehicleService.findById(registrationNumber);
+        if (moonPatrolVehicle == null) {
+            throw new NotFoundVehicleException("Vehicle registration number does not exist.");
+        }
+        moonPatrolVehicleService.delete(registrationNumber);
+        System.out.println("Deleted successfully!");
     }
 }

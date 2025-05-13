@@ -14,7 +14,7 @@ public class MoonPetrolVehicleView extends CommonView {
 
     public static MoonPatrolVehicle getMoonPatrolVehicleInput() {
         System.out.print("Nhập số hiệu: ");
-        String registrationNumber = ValidationUtils.validateInput("DRN-\\d{3}", "Số hiệu không hợp lệ! Vui lòng nhập lại.");
+        String registrationNumber = ValidationUtils.validateInput("XTT-\\d{3}", "Số hiệu không hợp lệ! Vui lòng nhập lại.");
 
         List<String> manufacturerTypes = SaveFileUtils.readFromFile(MANUFACTURER_TYPE_FILE);
         System.out.println("Danh sách các hãng chế tạo.");

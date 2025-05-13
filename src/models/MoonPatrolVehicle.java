@@ -19,6 +19,11 @@ public class MoonPatrolVehicle extends Vehicle {
                 ", Year: " + productionYear + ", Coordinator: " + coordinator + ", Radiation Resistance: Level " + radiationResistanceLevel + "]";
     }
 
+    @Override
+    public String toString() {
+        return getDetails();
+    }
+
     public static MoonPatrolVehicle fromCSV(String csv) {
         String[] parts = csv.split(",");
         return new MoonPatrolVehicle(
