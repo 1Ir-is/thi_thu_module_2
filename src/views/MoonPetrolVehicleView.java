@@ -1,6 +1,7 @@
 package views;
 
 
+import models.Drone;
 import models.MoonPatrolVehicle;
 
 import services.vehicle.MoonPatrolVehicleService;
@@ -32,5 +33,16 @@ public class MoonPetrolVehicleView extends CommonView {
         return new MoonPatrolVehicle(registrationNumber, manufacturerType, productionYear, coordinator, radiationResistanceLevel);
     }
 
+    public static MoonPatrolVehicle getMoonPatrolVehicleUpdateInput(String registrationNumber) {
+        System.out.println("Số hiệu: " + registrationNumber);
 
+        String manufacturerType = getManufacturerType();
+        int productionYear = getProductionYear();
+        String coordinator = getCoordinator();
+
+        System.out.print("Nhập khả năng chống bức xạ: ");
+        int radiationResistanceLevel = ValidationUtils.validateInt(1,10);
+
+        return new MoonPatrolVehicle(registrationNumber, manufacturerType, productionYear, coordinator, radiationResistanceLevel);
+    }
 }

@@ -32,4 +32,9 @@ public class MoonPatrolVehicleService implements IVehicleService<MoonPatrolVehic
     public MoonPatrolVehicle findById(String registrationNumber) {
         return moonPatrolVehicleRepository.findById(registrationNumber);
     }
+
+    @Override
+    public void edit(String registrationNumber, MoonPatrolVehicle updatedVehicle) {
+        moonPatrolVehicleRepository.edit(registrationNumber, updatedVehicle);
+    }
 }

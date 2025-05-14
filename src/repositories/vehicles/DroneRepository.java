@@ -78,4 +78,15 @@ public class DroneRepository implements IVehicleRepository<Drone> {
         return null;
     }
 
+    @Override
+    public void edit(String registrationNumber, Drone updatedVehicle) {
+        List<Drone> drones = findAll();
+        for (int i = 0; i < drones.size(); i++) {
+            if (drones.get(i).getRegistrationNumber().equalsIgnoreCase(registrationNumber)) {
+                drones.set(i, updatedVehicle);
+                save(drones);
+                return;
+            }
+        }
+    }
 }

@@ -35,4 +35,14 @@ public class DroneController {
         droneService.delete(registrationNumber);
         System.out.println("Xoá thành công!");
     }
+
+    public void editDrone(String registrationNumber) throws NotFoundVehicleException {
+        Drone existingDrone = droneService.findById(registrationNumber);
+        if (existingDrone == null) {
+            throw new NotFoundVehicleException("Số hiệu không tồn tại!");
+        }
+        Drone updatedDrone = DroneView.getDroneUpdateInput(registrationNumber);
+        droneService.edit(registrationNumber, updatedDrone);
+        System.out.println("Cập nhật thành công!");
+    }
 }

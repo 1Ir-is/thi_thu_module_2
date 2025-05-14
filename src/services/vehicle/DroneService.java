@@ -32,4 +32,9 @@ public class DroneService implements IVehicleService<Drone> {
     public Drone findById(String registrationNumber) {
         return droneRepository.findById(registrationNumber);
     }
+
+    @Override
+    public void edit(String registrationNumber, Drone updatedVehicle) {
+        droneRepository.edit(registrationNumber, updatedVehicle);
+    }
 }

@@ -1,5 +1,7 @@
 package repositories.vehicles;
 
+import models.Drone;
+
 import java.util.List;
 
 public interface IVehicleRepository<T> {
@@ -9,4 +11,5 @@ public interface IVehicleRepository<T> {
     void delete(String registrationNumber);
     List<T> searchByName(String keyword);
     T findById(String registrationNumber);
+    void edit(String registrationNumber, T updatedVehicle);
 }

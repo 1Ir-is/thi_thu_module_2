@@ -35,4 +35,14 @@ public class MoonPatrolVehicleController {
         moonPatrolVehicleService.delete(registrationNumber);
         System.out.println("Deleted successfully!");
     }
+
+    public void editMoonPatrolVehicle(String registrationNumber) throws NotFoundVehicleException {
+        MoonPatrolVehicle existingVehicle = moonPatrolVehicleService.findById(registrationNumber);
+        if (existingVehicle == null) {
+            throw new NotFoundVehicleException("Số hiệu không tồn tại!");
+        }
+        MoonPatrolVehicle updatedVehicle = MoonPetrolVehicleView.getMoonPatrolVehicleUpdateInput(registrationNumber);
+        moonPatrolVehicleService.edit(registrationNumber, updatedVehicle);
+        System.out.println("Cập nhật thành công!");
+    }
 }

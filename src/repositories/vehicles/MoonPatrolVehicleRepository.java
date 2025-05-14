@@ -1,5 +1,6 @@
 package repositories.vehicles;
 
+import models.Drone;
 import models.MoonPatrolVehicle;
 import utils.SaveFileUtils;
 
@@ -14,7 +15,7 @@ public class MoonPatrolVehicleRepository implements IVehicleRepository<MoonPatro
         List<String> lines = SaveFileUtils.readFromFile(MOON_PATROL_VEHICLE_FILE);
         List<MoonPatrolVehicle> moonPatrolVehicles = new ArrayList<>();
         for (String line : lines) {
-            String[] parts = line.split("," , 2);
+            String[] parts = line.split(",", 2);
             if (parts.length > 1 && "MoonPatrolVehicle".equals(parts[0])) {
                 moonPatrolVehicles.add(MoonPatrolVehicle.fromCSV(parts[1]));
             }
@@ -68,7 +69,6 @@ public class MoonPatrolVehicleRepository implements IVehicleRepository<MoonPatro
         return result;
     }
 
-
     public MoonPatrolVehicle findById(String registrationNumber) {
         List<MoonPatrolVehicle> current = findAll();
         for (MoonPatrolVehicle moonPatrolVehicle : current) {
@@ -77,5 +77,17 @@ public class MoonPatrolVehicleRepository implements IVehicleRepository<MoonPatro
             }
         }
         return null;
+    }
+
+    @Override
+    public void edit(String registrationNumber, MoonPatrolVehicle updatedVehicle) {
+        List<MoonPatrolVehicle> vehicles = findAll();
+        for (int i = 0; i < vehicles.size(); i++) {
+            if (vehicles.get(i).getRegistrationNumber().equalsIgnoreCase(registrationNumber)) {
+                vehicles.set(i, updatedVehicle);
+                save(vehicles);
+                return;
+            }
+        }
     }
 }

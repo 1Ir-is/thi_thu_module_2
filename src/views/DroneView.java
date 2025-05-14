@@ -28,4 +28,17 @@ public class DroneView extends CommonView {
 
         return new Drone(registrationNumber, manufacturerType, productionYear, coordinator, maxRange);
     }
+
+    public static Drone getDroneUpdateInput(String registrationNumber) {
+        System.out.println("Số hiệu: " + registrationNumber);
+
+        String manufacturerType = getManufacturerType();
+        int productionYear = getProductionYear();
+        String coordinator = getCoordinator();
+
+        System.out.print("Nhập tầm bay tối đa (km): ");
+        int maxRange = ValidationUtils.validatePositiveInt("Lỗi! Vui lòng nhập lại.");
+
+        return new Drone(registrationNumber, manufacturerType, productionYear, coordinator, maxRange);
+    }
 }

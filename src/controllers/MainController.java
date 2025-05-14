@@ -33,6 +33,9 @@ public class MainController {
                     displayDeleteVehicleMenu();
                     break;
                 case 5:
+                    displayEditVehicleMenu();
+                    break;
+                case 6:
                     System.out.print("Bạn có chắc chắn muốn thoát? (y/n): ");
                     String confirmation = scanner.nextLine().trim().toLowerCase();
                     if ("y".equals(confirmation)) {
@@ -102,6 +105,27 @@ public class MainController {
                     break;
                 } else if (registrationNumber.startsWith("XTT")) {
                     moonPatrolVehicleController.deleteMoonPatrolVehicle(registrationNumber);
+                    break;
+                } else {
+                    System.out.println("Lỗi! Số hiệu phải bắt đầu bằng 'DRN' hoặc 'XTT'.");
+                }
+            } catch (NotFoundVehicleException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private void displayEditVehicleMenu() {
+        while (true) {
+            System.out.print("Nhập số hiệu: ");
+            String registrationNumber = scanner.nextLine();
+
+            try {
+                if (registrationNumber.startsWith("DRN")) {
+                    droneController.editDrone(registrationNumber);
+                    break;
+                } else if (registrationNumber.startsWith("XTT")) {
+                    moonPatrolVehicleController.editMoonPatrolVehicle(registrationNumber);
                     break;
                 } else {
                     System.out.println("Lỗi! Số hiệu phải bắt đầu bằng 'DRN' hoặc 'XTT'.");

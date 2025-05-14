@@ -9,8 +9,9 @@ public class MainView {
         System.out.println("2. Hiển thị danh sách phương tiện.");
         System.out.println("3. Tìm kiếm phương tiện.");
         System.out.println("4. Xoá phương tiện.");
-        System.out.println("5. Thoát.");
+        System.out.println("5. Chỉnh sửa phương tiện.");
+        System.out.println("6. Thoát.");
         System.out.print("Chọn chức năng: ");
-        return ValidationUtils.validateMenuChoice(5);
+        return ValidationUtils.validateMenuChoice(6);
     }
 }
